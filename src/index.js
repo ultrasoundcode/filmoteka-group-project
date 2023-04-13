@@ -1,2 +1,1 @@
-import './js/search';
-import './js/apiService';
+console.log('test');
