@@ -2,7 +2,6 @@ import MovieApi from './apiService';
 
 const movieApi = new MovieApi();
 
-
 const searchForm = document.querySelector('.search-form');
 const searchInput = searchForm.querySelector('[name="search"]');
 const gallery = document.querySelector('.gallery');
@@ -12,7 +11,7 @@ const libraryButton = document.querySelector('.library-page');
 // Загрузка списка самых популярных фильмов при загрузке страницы
 
 // Обработчик событий на форму поиска
-searchForm.addEventListener('submit', async (event) => {
+searchForm.addEventListener('submit', async event => {
   event.preventDefault();
   const query = searchInput.value.trim();
   const genre = document.querySelector('[name="genre"]').value.trim();
@@ -44,21 +43,28 @@ libraryButton.addEventListener('click', () => {
 
 async function renderMovies(data) {
   if (!data) {
-  return;
+    return;
   }
-  
-  gallery.innerHTML = data.map(movie => {
-  const imageSrc = movie.poster_path ? 
-  `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '';
-  const genreText = movie.genres ? `${movie.genres.map(genre => movieApi.getGenreNameById(genre.id)).join(', ')} | ${movie.release_date}` : movie.release_date;
-  return `
+
+  gallery.innerHTML = data
+    .map(movie => {
+      const imageSrc = movie.poster_path
+        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        : '';
+      const genreText = movie.genres
+        ? `${movie.genres
+            .map(genre => movieApi.getGenreNameById(genre.id))
+            .join(', ')} | ${movie.release_date}`
+        : movie.release_date;
+      return `
   <li data-id="${movie.id}">
     <img alt="${movie.title}" src="${imageSrc}">
     <h3>${movie.title}</h3>
     <p>${genreText}</p>
   </li>
 `;
-}).join('');
+    })
+    .join('');
 }
 
 (async () => {
@@ -69,10 +75,3 @@ async function renderMovies(data) {
     console.error(error);
   }
 })();
-
-
-
-
-
-
-
