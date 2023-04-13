@@ -1,2 +1,2 @@
-import './search';
-import './apiService';
+import './js/search';
+import './js/apiService';

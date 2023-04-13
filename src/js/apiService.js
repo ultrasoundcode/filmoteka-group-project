@@ -2,55 +2,48 @@ import axios from 'axios';
 import { BASE_URL, API_KEY } from './settings';
 
 export default class MovieApi {
-    constructor() {
-        this.query = '';
-        this.page = 1;
-        this.genre = '';
-        this.genreId = '';
-        this.language = 'en-US';
-        this.genreList = {};
-    }
+  constructor() {
+    this.query = '';
+    this.page = 1;
+    this.genre = '';
+    this.genreId = '';
+    this.language = 'en-US';
+    this.genreList = {};
+  }
 
-    async getGenreList() {
-        const url = `${this.BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
-        const response = await axios.get(url);
-        response.data.genres.forEach(genre => {
-          this.genreList[genre.id] = genre.name;
-        console.log(genre.name);
-        });
-    }
-    
-    getGenreNameById(id) {
-        console.log(response.genre_ids)
-        return this.genreList[id];
-    }
-    
+  async getGenreList() {
+    const url = `${this.BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
+    const response = await axios.get(url);
+    response.data.genres.forEach(genre => {
+      this.genreList[genre.id] = genre.name;
+      console.log(genre.name);
+    });
+  }
 
-    async getTrendingMovies() {
-        const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&language=${this.language}&page=${this.page}`;
-        const response = await axios.get(url);
-        console.log(response.data.results[0].genre_ids)
-        return response.data.results;
-    }
+  getGenreNameById(id) {
+    console.log(response.genre_ids);
+    return this.genreList[id];
+  }
 
-    async searchMovies(query) {
-        const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=${this.language}&query=${this.query}`;
-        const response = await axios.get(url);
-        return response.data.results;
-    }
+  async getTrendingMovies() {
+    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&language=${this.language}&page=${this.page}`;
+    const response = await axios.get(url);
+    console.log(response.data.results[0].genre_ids);
+    return response.data.results;
+  }
 
-    async getMovieDetails(movieId) {
-        const url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`;
-        const response = await axios.get(url);
-        return response.data;
-    }
+  async searchMovies(query) {
+    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=${this.language}&query=${this.query}`;
+    const response = await axios.get(url);
+    return response.data.results;
+  }
+
+  async getMovieDetails(movieId) {
+    const url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`;
+    const response = await axios.get(url);
+    return response.data;
+  }
 }
-
-
-
-
-
-
 
 // async getTrendingMovies() {
 //     const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&language=${this.language}&page=${this.page}`;
@@ -61,7 +54,7 @@ export default class MovieApi {
 //     const data = response.data;
 //     const trendingMovies = data.results;
 //     return trendingMovies;
-//  } 
+//  }
 
 //  async getSearchMovies() {
 //     const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=${this.language}&query=${this.query}`;
@@ -84,7 +77,7 @@ export default class MovieApi {
 //       const searchedMovies = data.results;
 //       return searchedMovies;
 //  }
-  
+
 //  async getGenres() {
 //       const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=${this.language}`;
 //       const response = await axios.get(url);
@@ -94,7 +87,7 @@ export default class MovieApi {
 //       const data = response.data;
 //       const genres = data.genres;
 //       return genres;
-//  }   
+//  }
 
 //  async getMovieById(movieId) {
 //     const url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`;
@@ -109,12 +102,12 @@ export default class MovieApi {
 //  async getNormalizer(data) {
 //       const moviesArr = await data;
 //       const genresArr = await this.getGenres();
-  
+
 //       const findGenreName = (id) => {
 //       const data = genresArr.find((gener) => id === gener.id);
 //       return data.name;
 //       };
-  
+
 //       const updateMovie = (movie) => {
 //       const genres = [];
 //       const genresIdArr = movie.genre_ids;
