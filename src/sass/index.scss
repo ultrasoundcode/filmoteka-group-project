@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import '~node_modules/modern-normalize/modern-normalize.css';
 @import './common';
 @import './header';
 @import './footer';
 @import './gallery';
+
 .visually-hidden {
   opacity: 0;
   pointer-events: none;
