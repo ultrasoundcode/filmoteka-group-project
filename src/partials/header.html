@@ -1,1 +1,43 @@
-
+<header class="page-header">
+  <div class="cointainer page-header__container">
+    <nav class="page-header__navigation">
+      <ul class="page-header__menu">
+        <li class="page-header__item">
+          <input
+            class="search-input"
+            type="text"
+            id="movie-search"
+            placeholder="Movie"
+          />
+          <button class="search-button">
+            <svg class="page-header__search_icon" width="16" height="16">
+              <use href="../images/icons.svg#search-icon"></use>
+            </svg>
+          </button>
+        </li>
+        <li class="page-header__item">
+          <button class="header-button nav-button current">Home</button>
+        </li>
+        <li class="page-header__item">
+          <button class="header-button nav-button">My Library</button>
+        </li>
+      </ul>
+    </nav>
+    <ul class="page-header__movie-menu my-library">
+      <li class="page-header__movie-menu-item">
+        <button class="header-button library-button watched">Watched</button>
+      </li>
+      <li class="page-header__movie-menu-item">
+        <button class="header-button library-button queue">Queue</button>
+      </li>
+    </ul>
+    <ul class="page-header__logo">
+      <li class="page-header__logo-item">
+        <svg class="page-header__logo_icon" width="50" height="50">
+          <use href="../images/icons.svg#logo-icon"></use>
+        </svg>
+      </li>
+      <li class="page-header__logo-item">Filmoteka</li>
+    </ul>
+  </div>
+</header>
