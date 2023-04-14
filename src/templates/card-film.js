@@ -1,22 +1,38 @@
+import { refs } from '../refs';
+import genresData from '../genres.json';
+export const genres = genresData.genres;
+// console.log(genres[0].id);
 
-import MovieApi from '../apiService';
-
-export function createMarkup(data) {
-  return data.results.map(({ id, poster_path, title, backdrop_path, genre_ids, release_date }) => {
-    const genres = genre_ids.map(id => MovieApi.getGenreNameById(id));
-    return `
-      <li data-id="${id}">
-        <img class="poster" src="${poster_path}" alt="${title}"
-          data-source="https://image.tmdb.org/t/p/w500${backdrop_path}" />
-        <h3 class="film-name ">
-          ${title}
-        </h3>
-        <p class="film-genres">
-          ${genres.map((genre) => `<span class="film-genre">${genre}</span>`).join('')}
-          | ${release_date}
-        </p>
-      </li>
-    `;
-  }).join('');
+// Рендер карточек с популярными фильмами 
+export async function renderMovies(data) {
+  if (!data) {
+  return;
+  }
+  refs.gallery.innerHTML = data.map(movie => {
+  const imageSrc = movie.poster_path ? 
+  `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '';
+  const genres = genersForFilmCard(movie.genre_ids);
+  const year = movie.release_date ? movie.release_date.split('-')[0] : 'n/a';
+  return `
+  <li data-id="${movie.id}">
+    <img alt="${movie.title}" src="${imageSrc}">
+    <h3>${movie.title}</h3>
+    <p>${genres} | ${year}</p>
+  </li>
+`;
+}).join('');
 }
 
+// Генерируем жанры по id-шнику
+function genersForFilmCard(arrayOfGenersID) {
+  const arrayOfGenres = arrayOfGenersID.map(id => {
+    return genres.find(genre => genre.id === id).name;
+  });
+  const result =
+    arrayOfGenres.length > 2
+      ? arrayOfGenres.splice(0, 2).concat('Other').join(', ')
+      : arrayOfGenres.join(', ');
+  
+  return result;
+}
+genersForFilmCard([28, 16, 99])

@@ -1,6 +1,7 @@
-const refs = {
+export const refs = {
     searchForm: document.querySelector('.search-form'),
-    inputForm: document.querySelector('.input-text'),
-    searchBtn: document.querySelector('.searchBtn'),
-    galleryItems: document.querySelector('.gallery'),
+    searchInput: document.querySelector('.input-text'),
+    homeBtn: document.querySelector('.home-page'),
+    libraryBtn: document.querySelector('.library-page'),
+    gallery: document.querySelector('.gallery'),
 }
