@@ -1,10 +1,9 @@
 import MovieApi from './apiService';
 import { refs } from './refs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { renderMovies } from './templates/card-film';
+import { renderMovies } from './card-film';
 
 const movieApi = new MovieApi();
-
 // Загрузка списка самых популярных фильмов при загрузке страницы
 (async () => {
   try {
@@ -16,23 +15,25 @@ const movieApi = new MovieApi();
 })();
 
 // Обработчик событий на форму поиска
-refs.searchForm.addEventListener('submit', onSearchMovie);
+refs.searchForm.addEventListener('input', onSearchMovie);
 // Обработчик событий на кнопку "HOME"
 refs.homeBtn.addEventListener('click', onHomeBtn);
 // Обработчик событий на кнопку "MY LIBRARY"
 refs.libraryBtn.addEventListener('click', onLibraryBtn);
 
 async function onSearchMovie(e) {
-  e.preventDefault();
+  // e.preventDefault();
   const query = refs.searchInput.value.trim();
   try {
     if (query === '') {
-     Notify.info('I need your clothes, your boots and your...QUERY! :)');
-     return;
+      Notify.info('I need your clothes, your boots and your...QUERY! :)');
+      return;
     }
     const movies = await movieApi.searchMovies(query);
     if (movies.length === 0) {
-      Notify.failure('Houston, we have a problem :( , no movies found ...Please try another search term.');
+      Notify.failure(
+        'Houston, we have a problem :( , no movies found ...Please try another search term.'
+      );
       return;
     }
     renderMovies(movies);
@@ -48,10 +49,8 @@ async function onHomeBtn() {
   } catch (error) {
     console.error(error);
   }
-};
+}
 
 async function onLibraryBtn() {
   // Здесь можно перейти на страницу с выбранной коллекцией фильмов
-};
-
-
+}
