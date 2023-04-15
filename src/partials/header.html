@@ -1,43 +1,57 @@
 <header class="page-header">
-  <div class="cointainer page-header__container">
+  <div class="container page-header__container">
     <nav class="page-header__navigation">
       <ul class="page-header__menu">
         <li class="page-header__item">
-          <input
-            class="search-input"
-            type="text"
-            id="movie-search"
-            placeholder="Movie"
-          />
-          <button class="search-button">
-            <svg class="page-header__search_icon" width="16" height="16">
-              <use href="../images/icons.svg#search-icon"></use>
-            </svg>
+          <a
+            class="header-button home-page nav-button current"
+            href="./index.html"
+            >Home</a
+          >
+        </li>
+        <li class="page-header__item">
+          <button class="header-button nav-button current home-page">
+            Home
           </button>
         </li>
         <li class="page-header__item">
-          <button class="header-button nav-button current home-page">Home</button>
-        </li>
-        <li class="page-header__item">
-          <button class="header-button nav-button library-page">My Library</button>
+          <button class="header-button nav-button library-page">
+            My Library
+          </button>
         </li>
       </ul>
+
+      <form class="form_header">
+        <input
+          class="search-input"
+          type="text"
+          id="movie-search"
+          placeholder="Movie search"
+        />
+
+        <input type="submit" value="" />
+      </form>
+      <!-- <button class="search-button">
+        <svg class="page-header__search_icon" width="16" height="16">
+          <use href="./img/icons.svg#search-icon"></use>
+        </svg>
+      </button> -->
     </nav>
     <ul class="page-header__movie-menu my-library">
-      <li class="page-header__movie-menu-item">
-        <button class="header-button library-button watched">Watched</button>
+      <li class="page-header__movie-menu-item watched">
+        <a class="header-button library-button" href="#">Watched</a>
       </li>
-      <li class="page-header__movie-menu-item">
-        <button class="header-button library-button queue">Queue</button>
+      <li class="page-header__movie-menu-item queue">
+        <a class="header-button library-button current" href="#">Queue</a>
       </li>
     </ul>
     <ul class="page-header__logo">
       <li class="page-header__logo-item">
         <svg class="page-header__logo_icon" width="50" height="50">
-          <use href="../images/icons.svg#logo-icon"></use>
+          <use href="./img/icons.svg#logo-icon"></use>
         </svg>
       </li>
-      <li class="page-header__logo-item">Filmoteka</li>
+      <li class="page-header__logo-item logo-text">Filmoteka</li>
     </ul>
   </div>
 </header>

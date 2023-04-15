@@ -1,3 +1,5 @@
+import './js/apiService';
+import './js/search';
 import storage from './js/storage/modal-home';
 import storageGetQueue from './js/storage/get-queue';
 import storageAddWatched from './js/storage/add-watched';
