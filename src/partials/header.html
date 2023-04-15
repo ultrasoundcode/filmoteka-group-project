@@ -23,28 +23,30 @@
           class="search-input"
           type="text"
           id="movie-search"
-          placeholder="Movie"
+          placeholder="Movie search"
         />
-        <button class="search-button">
-          <svg class="page-header__search_icon" width="16" height="16">
-            <use href="./img/icons.svg#search-icon"></use>
-          </svg>
-        </button>
+
+        <input type="submit" value="" />
       </form>
+      <!-- <button class="search-button">
+        <svg class="page-header__search_icon" width="16" height="16">
+          <use href="./img/icons.svg#search-icon"></use>
+        </svg>
+      </button> -->
     </nav>
     <ul class="page-header__movie-menu my-library">
       <li class="page-header__movie-menu-item watched">
-        <button class="header-button library-button">Watched</button>
+        <a class="header-button library-button" href="#">Watched</a>
       </li>
       <li class="page-header__movie-menu-item queue">
-        <button class="header-button library-button">Queue</button>
+        <a class="header-button library-button current" href="#">Queue</a>
       </li>
     </ul>
     <ul class="page-header__logo">
-      <li class="page-header__logo-item temp-logo">
-        <!-- <svg class="page-header__logo_icon" width="50" height="50">
-          <use href="../img/logo-icon.svg"></use>
-        </svg> -->
+      <li class="page-header__logo-item">
+        <svg class="page-header__logo_icon" width="50" height="50">
+          <use href="./img/icons.svg#logo-icon"></use>
+        </svg>
       </li>
       <li class="page-header__logo-item logo-text">Filmoteka</li>
     </ul>
