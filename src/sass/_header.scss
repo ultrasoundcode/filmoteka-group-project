@@ -1,57 +1,55 @@
+// =======================================================================================
 .page-header {
-  background-color: #ff980d;
   padding-top: 14px;
-  padding-left: 14px;
-  padding-right: 14px;
-  padding-bottom: 20px;
+  background-image: url(../img/header/img-header-320@1x.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 460px;
+  border-radius: 10px;
+  margin: 20px 20px 0 20px;
+  @media screen and (min-width: 768px) {
+    background-image: url(../img/header/img-header-1200@1x.png);
+  }
 }
+.page-header__menu {
+  display: flex;
+  align-items: center;
+}
+.header-button {
+  display: inline-block;
+  padding: 10px 26px;
+  background-color: white;
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: black;
 
-@media screen and (min-width: 768px) {
-  .page-header {
-    padding-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .page-header {
-    padding-top: 16px;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 32px;
-  }
-}
-
-@media screen and (min-width: 767px) {
-  .page-header__container {
-    display: flex;
-    width: 100%;
-    background-image: url(/images/header/img-header-1200@1x.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right;
-  }
-}
-@media screen and (max-width: 320px) {
-  .page-header__container {
-    display: flex;
-    width: 100%;
-    background-image: url(/images/header/img-header-320@1x.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  &__second {
+    width: 115px;
+    height: 34px;
   }
 }
 
+.form_header {
+  position: relative;
+  margin-left: 14px;
+  margin-right: 14px;
+}
 .search-input {
-}
-
-.page-header__item {
-}
-
-.page-header__logo {
-}
-
-.page-header__logo-item {
+  padding: 10px 26px;
+  background-color: white;
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: black;
+  width: 100%;
+  border: none;
+  @media screen and (min-width: 768px) {
+    width: 165px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 187px;
+  }
 }

@@ -4,9 +4,4 @@
 @import './header';
 @import './footer';
 @import './gallery';
-
-.visually-hidden {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-}
+@import './container';
