@@ -6,10 +6,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 460px;
+  width: 280px;
   border-radius: 10px;
-  margin: 20px 20px 0 20px;
+  margin: 20px;
   @media screen and (min-width: 768px) {
     background-image: url(../img/header/img-header-1200@1x.png);
+    width: auto;
+    height: 222px;
   }
 }
 .page-header__menu {
@@ -17,7 +20,16 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    left: 187px;
+  }
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    left: 20%;
+  }
 }
+
 .header-button {
   display: inline-block;
   padding: 10px 26px;
@@ -102,15 +114,26 @@ input[type='submit'] {
 
 .page-header__logo {
   position: absolute;
-  bottom: 0;
+  bottom: 10%;
   display: flex;
   justify-content: center;
+  margin-left: 44px;
+  @media screen and (min-width: 768px) {
+    bottom: 0;
+    justify-content: left;
+  }
 }
 
 .page-header__movie-menu {
   display: flex;
   gap: 4px;
   margin: 8px 14px;
+  @media screen and (min-width: 768px) {
+    margin: 16px 16px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin: 16px 32px;
+  }
 }
 
 .library-button {
@@ -141,4 +164,17 @@ input[type='submit'] {
 .nav-button.current {
   background: #000000;
   color: #ffffff;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.my-library {
+  position: absolute;
+  bottom: 0;
+  @media screen and (min-width: 768px) {
+    top: 0;
+    right: 0;
+  }
 }
