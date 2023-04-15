@@ -2,30 +2,33 @@
   <div class="container page-header__container">
     <nav class="page-header__navigation">
       <ul class="page-header__menu">
-        <li class="page-header__item search-field">
-          <input
-            class="search-input"
-            type="text"
-            id="movie-search"
-            placeholder="Movie"
-          />
-          <button class="search-button">
-            <svg class="page-header__search_icon" width="16" height="16">
-              <!-- <use href="../img/icons.svg#search-icon"></use> -->
-            </svg>
-          </button>
+        <li class="page-header__item">
+          <a
+            class="header-button home-page nav-button current"
+            href="./index.html"
+            >Home</a
+          >
         </li>
         <li class="page-header__item">
-          <button class="header-button home-page nav-button current">
-            Home
-          </button>
-        </li>
-        <li class="page-header__item">
-          <button class="header-button library-page nav-button">
-            My Library
-          </button>
+          <a class="header-button library-page nav-button" href="./library.html"
+            >My Library</a
+          >
         </li>
       </ul>
+
+      <form>
+        <input
+          class="search-input"
+          type="text"
+          id="movie-search"
+          placeholder="Movie"
+        />
+        <button class="search-button">
+          <svg class="page-header__search_icon" width="16" height="16">
+            <!-- <use href="../img/icons.svg#search-icon"></use> -->
+          </svg>
+        </button>
+      </form>
     </nav>
     <ul class="page-header__movie-menu my-library">
       <li class="page-header__movie-menu-item watched">
