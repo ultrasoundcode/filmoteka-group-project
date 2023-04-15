@@ -1,29 +1,19 @@
-const searchInput = document.querySelector('.search-input');
-const searchButton = document.querySelector('.search-button');
+import galleryMovies from '../partials/templates/film.hbs';
+import { getRefs } from '../js/refs';
 
-function searchMovies(query) {
-  const filteredMovies = savedMovies.filter(movie => {
-    const title = movie.title.toLowerCase();
-    const queryLower = query.toLowerCase();
-    return title.includes(queryLower);
-  });
+export const renderGallery = function (objects) {
+  //добавляет в конец по шаблону карточки фильмов
+  const refs = getRefs();
+  refs.galleryItems.insertAdjacentHTML('beforeend', galleryMovies(objects));
+};
 
-  renderSavedMovies(filteredMovies);
-}
-
-searchButton.addEventListener('click', () => {
-  const query = searchInput.value.trim();
-  if (query === '') {
-    renderSavedMovies(savedMovies);
-    return;
-  }
-  searchMovies(query);
-});
-
-//
-
-searchInput.addEventListener('keydown', event => {
-  if (event.keyCode === 13) {
-    const query = searchInput.value.trim();
-  }
-});
+export const renderAllGallery = function (object) {
+  //добавляет в конец по шаблону карточки фильмов
+  const refs = getRefs();
+  refs.galleryItems.innerHTML = '';
+  object.forEach(film => renderGallery(film)); // перебирает обьект и выводит карточки фильмов
+};
+export const renderAddToGallery = function (object) {
+  //добавляет в конец к текущему отображению документа карточки
+  object.forEach(film => renderGallery(film)); // перебирает обьект и выводит карточки фильмов
+};
