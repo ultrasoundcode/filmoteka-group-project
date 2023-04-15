@@ -1,9 +1,64 @@
+// partial reset
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  display: block;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin: 0;
+}
+
+input {
+  display: block;
+  margin: 0;
+}
+// =======================================================================================
 .page-header {
   background-color: #ff980d;
   padding-top: 14px;
   padding-left: 14px;
   padding-right: 14px;
   padding-bottom: 20px;
+}
+
+.container {
+  margin: 0 20px;
+  max-width: 320px;
+  position: relative;
 }
 
 @media screen and (min-width: 768px) {
@@ -35,23 +90,89 @@
 }
 @media screen and (max-width: 320px) {
   .page-header__container {
-    display: flex;
-    width: 100%;
-    background-image: url(/images/header/img-header-320@1x.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.4) 65.37%
+      ),
+      url(/images/header/img-header-320@1x.png);
+    border-radius: 10px;
+    height: 460px;
+  }
+  .search-field {
+    width: 252px;
+    order: 3;
   }
 }
 
-.search-input {
+.header-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 26px;
+  gap: 10px;
+
+  background: #ffffff;
+  border-radius: 100px;
+}
+
+.search-button {
+  position: absolute;
+  right: 0;
+}
+.library-button {
+  display: flex;
 }
 
 .page-header__item {
+  display: flex;
+  position: relative;
 }
 
+.page-header__menu {
+  position: relative;
+  display: flex;
+}
+
+// .search-field {
+//   position: absolute;
+// }
 .page-header__logo {
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 45px;
+  padding: 0px;
+  gap: 8px;
 }
 
-.page-header__logo-item {
+.my-library {
+  display: flex;
+  position: relative;
+  justify-content: end;
+  gap: 4px;
+}
+
+.temp-logo {
+  height: 50px;
+  width: 50px;
+  background-color: beige;
+}
+
+.logo-text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.2;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
 }
