@@ -17,10 +17,11 @@ export async function renderMovies(data) {
         ? movie.release_date.split('-')[0]
         : 'n/a';
       return `
-  <li data-id="${movie.id}">
-      <img alt="${movie.title}" src="${imageSrc}">
-    <h3>${movie.title}</h3>
-    <p>${genres} | ${year}</p>
+  <li data-id="${movie.id}" class='gallery__item'>
+      <img class='gallery__item-image' alt="${movie.title}" src="${imageSrc}">
+    <div class='gallery__item-description'>
+    <h3 class='gallery__item-description-title' >${movie.title}</h3>
+    <p class='gallery__item-description-genres' >${genres} | ${year}</p></div>
   </li>
 `;
     })
