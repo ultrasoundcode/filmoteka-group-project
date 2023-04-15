@@ -1,0 +1,107 @@
+/* Style the backdrop */
+.backdrop-movie {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* add a faded backdrop */
+  z-index: 9999;
+}
+
+/* Style the modal container */
+.modal__container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* add a thin shadow */
+}
+
+/* Style the close button */
+.modal__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.modal__close-button:hover .modal__icon-close {
+  fill: #ac2525; /* add a hover effect of fill */
+}
+
+/* Style the modal image container */
+.modal__image-container {
+  display: inline-block;
+  width: 40%;
+  vertical-align: top;
+}
+
+/* Style the modal information container */
+.info {
+  display: inline-block;
+  width: 58%;
+  margin-left: 2%;
+  vertical-align: top;
+}
+
+/* Style the modal title */
+.modal__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Style the modal description table */
+.description {
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.description__line {
+  border-bottom: 1px solid #ccc;
+}
+.description__head,
+.description__head-titel {
+  text-align: left;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+}
+.description__data {
+  text-align: left;
+  padding: 0.5rem 1rem;
+}
+
+/* Style the modal about and overview text */
+.modal__about {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.modal__overview {
+  margin-bottom: 1rem;
+}
+
+/* Style the modal buttons */
+.modal__button-container {
+  text-align: center;
+}
+.modal__button,
+.movie-modal__button {
+  display: inline-block;
+  background-color: #0071c5;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+.modal__button:hover,
+.movie-modal__button:hover {
+  background-color: #005ca3;
+}
