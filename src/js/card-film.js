@@ -1,4 +1,4 @@
-import MovieApi from '../apiService';
+import MovieApi from './apiService';
 
 export function createMarkup(data) {
   return data.results
