@@ -1,28 +1,29 @@
-import { refs } from './refs';
-import genresData from '../genres.json';
-export const genres = genresData.genres;
-// Рендер карточек с популярными фильмами
-export async function renderMovies(data) {
-  if (!data) {
-    return;
-  }
-  refs.gallery.innerHTML = data
-    .map(movie => {
-      const imageSrc = movie.poster_path
-        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-        : 'https://upload.wikimedia.org/wikipedia/commons/d/dc/No_Preview_image_2.png';
-      const genres = genersForFilmCard(movie.genre_ids);
-      const year = movie.release_date
-        ? movie.release_date.split('-')[0]
-        : 'n/a';
-      return `
-  <li data-id="${movie.id}">
-    <img alt="${movie.title}" src="${imageSrc}">
-    <h3>${movie.title}</h3>
-    <p>${genres} | ${year}</p>
-  </li>
-`;
-    })
+import MovieApi from './apiService';
+
+export function createMarkup(data) {
+  return data.results
+    .map(
+      ({ id, poster_path, title, backdrop_path, genre_ids, release_date }) => {
+        const genres = genre_ids.map(id => MovieApi.getGenreNameById(id));
+        return `
+      <li class="gallery__item" data-id="${id}">
+        <img class="poster gallery__item-image" src="${poster_path}" alt="${title}"
+          data-source="https://image.tmdb.org/t/p/w500${backdrop_path}" />
+          <div class="gallery__description">
+          <p class=" gallery__description-title film-name ">
+          ${title}
+        </p>
+        <p class="gallery__description-genres film-genres">
+          ${genres
+            .map(genre => `<span class="film-genre">${genre}</span>`)
+            .join('')}
+          | ${release_date}
+        </p>
+        </div>
+      </li>
+    `;
+      }
+    )
     .join('');
 }
 

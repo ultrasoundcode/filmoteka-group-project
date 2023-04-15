@@ -1,1 +1,54 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  display: block;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin: 0;
+}
+
+input {
+  display: block;
+  margin: 0;
+}
+.visually-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
