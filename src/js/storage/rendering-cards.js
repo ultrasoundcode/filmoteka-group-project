@@ -27,3 +27,4 @@ searchInput.addEventListener('keydown', event => {
     const query = searchInput.value.trim();
   }
 });
+// 
