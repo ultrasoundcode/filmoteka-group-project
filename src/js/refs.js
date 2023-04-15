@@ -1,7 +1,6 @@
 export const refs = {
   //-----nav-menu-refs------
-  searchForm: document.querySelector('.search-form'),
-  searchInput: document.querySelector('.input-text'),
+  searchInput: document.querySelector('.search-input'),
   homeBtn: document.querySelector('.home-page'),
   libraryBtn: document.querySelector('.library-page'),
   gallery: document.querySelector('.gallery'),

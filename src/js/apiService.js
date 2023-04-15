@@ -10,7 +10,6 @@ export default class MovieApi {
     async getTrendingMovies() {
         const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&language=${this.language}&page=${this.page}`;
         const response = await axios.get(url);
-        // console.log(response.data.results)
         return response.data.results;
     }
 
