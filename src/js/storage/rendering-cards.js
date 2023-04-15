@@ -20,8 +20,4 @@ searchButton.addEventListener('click', () => {
   searchMovies(query);
 });
 
-searchInput.addEventListener('keydown', event => {
-  if (event.keyCode === 13) {
-    const query = searchInput.value.trim();
-  }
-});
+
