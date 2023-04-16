@@ -1,5 +1,5 @@
 <header class="page-header">
-  <div class="container">
+  <div class="container page-header__container">
     <nav class="page-header__navigation">
       <ul class="page-header__menu">
         <li class="page-header__item">
@@ -24,28 +24,27 @@
           value=""
         />
       </form>
-      <!-- <button class="search-button">
-        <svg class="page-header__search_icon" width="16" height="16">
-          <use href="./img/icons.svg#search-icon"></use>
-        </svg>
-      </button> -->
     </nav>
-    <ul class="page-header__movie-menu my-library">
-      <li class="page-header__movie-menu-item watched">
-        <a class="header-button library-button" href="#">Watched</a>
-      </li>
-      <li class="page-header__movie-menu-item queue">
-        <a class="header-button library-button current" href="#">Queue</a>
-      </li>
-    </ul>
-    <ul class="page-header__logo">
-      <li class="page-header__logo-item">
+    <div class="wrapper">
+      <div class="page-header__logo">
         <svg class="page-header__logo_icon" width="50" height="50">
           <use href="./img/icons.svg#logo-icon"></use>
         </svg>
-      </li>
-      <li class="page-header__logo-item logo-text">Filmoteka</li>
-    </ul>
+        <p class="logo-text">Filmoteka</p>
+      </div>
+
+      <ul class="page-header__movie-menu my-library">
+        <li class="page-header__movie-menu-item">
+          <button class="header-button library-button watched">Watched</button>
+        </li>
+        <li class="page-header__movie-menu-item">
+          <button class="header-button library-button current queue">
+            Queue
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
+
   <script src="./js/homeToLib.js" type="module"></script>
 </header>
