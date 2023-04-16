@@ -1,16 +1,16 @@
 import {
-  makeGenresArray,
   genersForFilmCard,
-} from '../library/library-render-from-local-storage';
+  makeGenresArray,
+} from '../library/fnRenderMoviesDetailed';
 
-export function modalCard(movie, targetId) {
+// Шаблон модалки, принимает объект фильма.
+// Для получения жанров использует genersForFilmCard и makeGenresArray
+export function modalCard(movie) {
   const genres = genersForFilmCard(makeGenresArray(movie));
-
   return `<div
   class="modal__image-container"
   data-year="${movie.release_date}"
-  data-action="${targetId}"
->
+  >
   <img
     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
     alt="${movie.title} poster"

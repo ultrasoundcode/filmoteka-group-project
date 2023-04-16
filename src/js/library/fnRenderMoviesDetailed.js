@@ -1,13 +1,8 @@
 import genresData from '../../genres.json';
 import { refs } from '../refs';
-import { getAllMoviesFromLocalStorage } from './library-filters';
 const genres = genresData.genres;
 
-refs.libraryBtn.addEventListener('click', onMyLibraryClick);
-function onMyLibraryClick() {
-  renderMoviesDetailed(getAllMoviesFromLocalStorage());
-}
-export async function renderMoviesDetailed(data) {
+async function renderMoviesDetailed(data) {
   if (!data) {
     return;
   }
@@ -33,6 +28,7 @@ export async function renderMoviesDetailed(data) {
     .join('');
 }
 
+// Массив для функции genersForFilmCard
 function makeGenresArray(movie) {
   let genresIdsArray = [];
   movie.genres.forEach(genre => {
@@ -40,9 +36,9 @@ function makeGenresArray(movie) {
   });
   return genresIdsArray;
 }
-
-function genersForFilmCard(arrayOfGenersID) {
-  const arrayOfGenres = arrayOfGenersID.map(id => {
+// Обработка ID жанров и вывод их наименований для renderMoviesDetailed
+function genersForFilmCard(genreIds) {
+  const arrayOfGenres = genreIds.map(id => {
     return genres.find(genre => genre.id === id).name;
   });
   const result =
@@ -52,4 +48,4 @@ function genersForFilmCard(arrayOfGenersID) {
   return result;
 }
 
-export { makeGenresArray, genersForFilmCard };
+export { makeGenresArray, genersForFilmCard, renderMoviesDetailed };
