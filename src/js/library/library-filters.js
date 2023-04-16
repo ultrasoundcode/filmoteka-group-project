@@ -4,7 +4,7 @@ import { renderMoviesDetailed } from './library-render-from-local-storage';
 refs.libButtons.addEventListener('click', onLibraryBtnClick);
 
 async function onLibraryBtnClick(event) {
-  if (event.target.nodeName !== 'A') {
+  if (event.target.nodeName !== 'BUTTON') {
     return;
   }
   const currentActiveTarget = refs.libButtons.querySelector('.active');
@@ -25,7 +25,7 @@ function toggleActiveClass(currentActiveTarget, selectedTarget) {
   selectedTarget.classList.add('active');
   selectedTarget.setAttribute(
     'data-tag',
-    selectedTarget.textContent.toLowerCase()
+    selectedTarget.innerText.trim().toLowerCase()
   );
 }
 
