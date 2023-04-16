@@ -29,10 +29,13 @@ refs.gallery.addEventListener('click', async e => {
 
 function addToLocalStorage(tag, movieData, key) {
   let movies = JSON.parse(localStorage.getItem(tag)) || [];
+
   if (!localStorage.getItem(key)) {
     localStorage.setItem(key, JSON.stringify([]));
   }
-  if (tag === key) {
+
+  if (tag === 'watched') {
+    const queueMovies = JSON.parse(localStorage.getItem('queue')) || [];
     const movieIndex = movies.findIndex(movie => movie.id === movieData.id);
     if (movieIndex === -1) {
       movies.push(movieData);
@@ -41,7 +44,22 @@ function addToLocalStorage(tag, movieData, key) {
       console.log('Movie is already in the array');
     }
   }
+
+  if (tag === 'queue') {
+    const watchedMovies = JSON.parse(localStorage.getItem('watched')) || [];
+    const movieIndex = movies.findIndex(movie => movie.id === movieData.id);
+    const watchedMovieIndex = watchedMovies.findIndex(
+      movie => movie.id === movieData.id
+    );
+    if (movieIndex === -1 && watchedMovieIndex === -1) {
+      movies.push(movieData);
+      localStorage.setItem(tag, JSON.stringify(movies));
+    } else {
+      console.log('Movie is already in the array');
+    }
+  }
 }
+
 function onAddToWatchedClick(movieData) {
   addToLocalStorage('watched', movieData, 'watched');
 }
