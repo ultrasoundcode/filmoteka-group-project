@@ -6,7 +6,7 @@ import {
 export function modalCard(movie, targetId) {
   const genres = genersForFilmCard(makeGenresArray(movie));
 
-  return (layout = `<div
+  return `<div
   class="modal__image-container"
   data-year="${movie.release_date}"
   data-action="${targetId}"
@@ -53,5 +53,5 @@ export function modalCard(movie, targetId) {
       Add to Queue
     </button>
   </div>
-</div>`);
+</div>`;
 }
