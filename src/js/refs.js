@@ -12,4 +12,6 @@ export const refs = {
   modal: document.querySelector('.modal'),
   closeBtn: document.querySelector('.modal__close-button'),
   modalContent: document.querySelector('.modal__render'),
+  // -----pagination-----
+  pagContainer: document.querySelector('.tui-pagination'),
 };

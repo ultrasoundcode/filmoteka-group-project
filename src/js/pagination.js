@@ -1,13 +1,13 @@
 import Pagination from 'tui-pagination';
-import refs from './refs';
-import { API_KEY }  from './settings';
+import { refs } from './refs';
+import { API_KEY } from './settings';
 import MovieApi from './apiService';
+import { renderMovies } from './card-film';
 
 const movieApi = new MovieApi();
 
-const paginationContainer = document.querySelector('.tui-pagination');
 let currentPage = 1;
-const pagination = new Pagination(paginationContainer, {
+const pagination = new Pagination(refs.pagContainer, {
   totalItems: 0,
   itemsPerPage: 20,
   visiblePages: 5,
@@ -33,16 +33,8 @@ const pagination = new Pagination(paginationContainer, {
       '</a>',
   },
 });
-
+pagination.reset(400);
 pagination.on('beforeMove', async event => {
-  const currentPage = event.page;
-  movieApi.resetPage();
-  movieApi.incrementPage(currentPage);
-  const movies = await movieApi.getTrendingMovies();
+  currentPage = event.page;
+  await movieApi.getMoviesForPagination(currentPage).then(r => renderMovies(r));
 });
-
-
-
-
-
-
