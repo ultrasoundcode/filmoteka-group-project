@@ -1,4 +1,11 @@
+import {
+  makeGenresArray,
+  genersForFilmCard,
+} from '../library/library-render-from-local-storage';
+
 export function modalCard(movie, targetId) {
+  const genres = genersForFilmCard(makeGenresArray(movie));
+
   return (layout = `<div
   class="modal__image-container"
   data-year="${movie.release_date}"
@@ -31,7 +38,7 @@ export function modalCard(movie, targetId) {
       </tr>
       <tr class="description__line">
         <th class="description__head">Genre</th>
-        <td class="description__data"></td>
+        <td class="description__data">${genres}</td>
       </tr>
     </tbody>
   </table>
