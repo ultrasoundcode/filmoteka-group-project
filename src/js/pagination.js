@@ -1,8 +1,7 @@
 import Pagination from 'tui-pagination';
 import { refs } from './refs';
-import { API_KEY } from './settings';
 import MovieApi from './apiService';
-import { renderMovies } from './card-film';
+import { renderMovies } from './card-film-render';
 
 const movieApi = new MovieApi();
 

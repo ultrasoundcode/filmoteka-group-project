@@ -2,7 +2,7 @@ import MovieApi from './apiService';
 import debounce from 'lodash/debounce';
 import { refs } from './refs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { renderMovies } from './card-film';
+import { renderMovies } from './card-film-render';
 
 const DEBOUNCE_DELAY = 1000;
 const movieApi = new MovieApi();
