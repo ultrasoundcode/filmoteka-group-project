@@ -1,5 +1,5 @@
 import galleryMovies from '../partials/templates/film.hbs';
-import { getRefs } from '../js/refs';
+import { getRefs } from '../refs';
 
 export const renderGallery = function (objects) {
   //добавляет в конец по шаблону карточки фильмов
