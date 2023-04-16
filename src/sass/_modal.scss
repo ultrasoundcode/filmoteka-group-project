@@ -1,4 +1,3 @@
-/* Style the backdrop */
 .backdrop-movie {
   display: none;
   position: fixed;
@@ -6,102 +5,254 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* add a faded backdrop */
-  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 16;
 }
-
-/* Style the modal container */
 .modal__container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* add a thin shadow */
-}
-
-/* Style the close button */
-.modal__close-button {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
+  z-index: 20;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  @media screen and(min-width: 320px) {
+    min-width: 280px;
+    padding: 48px 20px 40px 20px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  @media screen and(min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 704px;
+    padding: 40px 72px 40px 36px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @media screen and(min-width: 1280px) {
+    width: 806px;
+    padding: 40px 12px 40px 12px;
+  }
+}
+.modal__render {
+  @media screen and(min-width: 768px) {
+    display: flex;
+  }
+}
+.modal__close-button {
+  display: flex;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: 30px;
+  width: 30px;
   background-color: transparent;
   border: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
-}
-.modal__close-button:hover .modal__icon-close {
-  fill: #ac2525; /* add a hover effect of fill */
-}
-
-/* Style the modal image container */
-.modal__image-container {
-  display: inline-block;
-  width: 40%;
-  vertical-align: top;
+  &:hover .modal__icon-close {
+    fill: #ac2525;
+  }
 }
 
-/* Style the modal information container */
-.info {
-  display: inline-block;
-  width: 58%;
-  margin-left: 2%;
-  vertical-align: top;
+.modal__image {
+  border-radius: 5px;
+  width: 100%;
+  min-width: 240px;
+  margin-bottom: 20px;
+  @media screen and(min-width: 768px) {
+    margin-right: 68px;
+    width: 264px;
+  }
+  @media screen and(min-width: 1280px) {
+    margin-right: 16px;
+    max-width: 375px;
+  }
 }
 
-/* Style the modal title */
 .modal__title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  margin: 0px 0px 20px 0px;
+  padding: 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: uppercase;
+  color: #000000;
+  @media screen and(min-width: 1280px) {
+    font-size: 30px;
+    line-height: 1.1;
+  }
 }
-
-/* Style the modal description table */
-.description {
-  border-collapse: collapse;
-  margin-bottom: 1rem;
+.modal__description {
+  table-layout: fixed;
+  margin-bottom: 20px;
   width: 100%;
 }
-.description__line {
-  border-bottom: 1px solid #ccc;
-}
-.description__head,
-.description__head-titel {
+.description__head {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
   text-align: left;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  color: #8c8c8c;
+  width: 110px;
+  @media screen and(min-width: 1280px) {
+    width: 150px;
+  }
 }
 .description__data {
-  text-align: left;
-  padding: 0.5rem 1rem;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  margin-bottom: 8px;
 }
-
-/* Style the modal about and overview text */
+.description__head-titel {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #000000;
+}
+.description__vote {
+  width: 36px;
+  height: 16px;
+  margin-right: 3px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #ffffff;
+  text-align: center;
+  background: #ac2525;
+  border-radius: 5px;
+}
+.description__votes {
+  width: 36px;
+  height: 16px;
+  margin-left: 3px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #000000;
+  text-align: center;
+  background: #f7f7f7;
+  border-radius: 5px;
+}
 .modal__about {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 20px 0px;
+  text-transform: uppercase;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #000000;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 8px;
+  }
 }
 .modal__overview {
-  margin-bottom: 1rem;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  color: #000000;
+  overflow-y: auto;
+  margin: 0px 0px 20px 0px;
+  max-height: 250px;
 }
-
-/* Style the modal buttons */
 .modal__button-container {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  @media screen and(min-width: 1280px) {
+    justify-content: left;
+  }
 }
-.modal__button,
-.movie-modal__button {
-  display: inline-block;
-  background-color: #0071c5;
-  color: #fff;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  margin-right: 0.5rem;
-  cursor: pointer;
+.modal__button-1 {
+  height: 34px;
+  background: #ffffff;
+  border-radius: 100px;
+  color: #b92f2c;
+  border: 1px solid #000000;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: 125px;
+  @media screen and(min-width: 780px) {
+    width: 137px;
+    height: 38px;
+  }
+  @media screen and(min-width: 1280px) {
+    width: 165px;
+    height: 42px;
+  }
+  &.--active-btn {
+    color: white;
+    background-color: #b92f2c;
+    border: 1px solid #b92f2c;
+  }
+  &:hover,
+  &:focus {
+    color: white;
+    background-color: #b92f2c;
+    border: 1px solid #b92f2c;
+  }
 }
-.modal__button:hover,
-.movie-modal__button:hover {
-  background-color: #005ca3;
+.modal__button-2 {
+  height: 34px;
+  background: #ffffff;
+  border-radius: 100px;
+  color: #b92f2c;
+  border: 1px solid #000000;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: 111px;
+  @media screen and(min-width: 780px) {
+    width: 119px;
+    height: 38px;
+  }
+  @media screen and(min-width: 1280px) {
+    width: 134px;
+    height: 42px;
+  }
+  &.--active-btn {
+    color: white;
+    background-color: #b92f2c;
+    border: 1px solid #b92f2c;
+  }
+  &:hover,
+  &:focus {
+    color: white;
+    background-color: #b92f2c;
+    border: 1px solid #b92f2c;
+  }
 }
