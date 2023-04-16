@@ -1,21 +1,14 @@
 <header class="page-header">
-  <div class="container page-header__container">
+  <div class="container">
     <nav class="page-header__navigation">
       <ul class="page-header__menu">
         <li class="page-header__item">
-          <a
-            class="header-button home-page nav-button current"
-            href="./index.html"
-            >Home</a
-          >
-        </li>
-        <li class="page-header__item">
-          <button class="header-button nav-button current home-page">
+          <button class="header-button home-page nav-button current">
             Home
           </button>
         </li>
         <li class="page-header__item">
-          <button class="header-button nav-button library-page">
+          <button class="header-button library-page nav-button">
             My Library
           </button>
         </li>
@@ -27,9 +20,9 @@
           type="text"
           id="movie-search"
           placeholder="Movie search"
+          type="submit"
+          value=""
         />
-
-        <input type="submit" value="" />
       </form>
       <!-- <button class="search-button">
         <svg class="page-header__search_icon" width="16" height="16">
@@ -54,4 +47,5 @@
       <li class="page-header__logo-item logo-text">Filmoteka</li>
     </ul>
   </div>
+  <script src="./js/homeToLib.js" type="module"></script>
 </header>

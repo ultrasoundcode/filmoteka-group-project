@@ -8,4 +8,8 @@ export const refs = {
   libButtons: document.querySelector('.my-library'),
   queueBtn: document.querySelector('.queue'),
   watchedBtn: document.querySelector('.watched'),
+  // -----modal-----
+  modal: document.querySelector('.modal'),
+  closeBtn: document.querySelector('.modal__close-button'),
+  modalContent: document.querySelector('.modal__render'),
 };
