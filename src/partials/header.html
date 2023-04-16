@@ -1,5 +1,5 @@
 <header class="page-header">
-  <div class="container page-header__container">
+  <div class="page-header__container">
     <nav class="page-header__navigation">
       <ul class="page-header__menu">
         <li class="page-header__item">
@@ -10,14 +10,9 @@
           >
         </li>
         <li class="page-header__item">
-          <button class="header-button nav-button current home-page">
-            Home
-          </button>
-        </li>
-        <li class="page-header__item">
-          <button class="header-button nav-button library-page">
+          <a class="header-button library-page nav-button" href="./index.html">
             My Library
-          </button>
+          </a>
         </li>
       </ul>
 
@@ -54,4 +49,19 @@
       <li class="page-header__logo-item logo-text">Filmoteka</li>
     </ul>
   </div>
+  <script>
+    const homeBtn = document.querySelector('.home-page');
+    const element1 = document.querySelector('.page-header__movie-menu');
+    homeBtn.addEventListener('click', function () {
+      element1.classList.remove('is-hidden');
+      // element2.classList.add('is-hidden');
+      // element3.classList.add('is-hidden');
+    });
+    const libraryBtn = document.querySelector('.library-page');
+    libraryBtn.addEventListener('click', function () {
+      element1.classList.add('is-hidden');
+      // element2.classList.remove('is-hidden');
+      // element3.classList.remove('is-hidden');
+    });
+  </script>
 </header>
