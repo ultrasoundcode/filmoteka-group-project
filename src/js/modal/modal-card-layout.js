@@ -15,6 +15,7 @@ export function modalCard(movie, targetId) {
     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
     alt="${movie.title} poster"
     loading="lazy"
+    class="modal__image"
   />
 </div>
 <div class="info">
@@ -45,10 +46,10 @@ export function modalCard(movie, targetId) {
   <p class="modal__about">About</p>
   <p class="modal__overview">${movie.overview}</p>
   <div class="modal__button-container">
-    <button class="modal__button addWatched" type="button" data-action="id">
+    <button class="modal__button modal__button-1 addWatched" type="button" data-action="id">
       Add to Watched
     </button>
-    <button class="movie-modal__button addQueue" type="button" data-action="id">
+    <button class="movie-modal__button modal__button-2 addQueue" type="button" data-action="id">
       Add to Queue
     </button>
   </div>
