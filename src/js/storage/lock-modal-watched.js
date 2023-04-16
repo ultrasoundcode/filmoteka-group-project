@@ -1,7 +1,6 @@
 import storageGetWatched from './get-watched';
 
-function lockModalWatched(card) {
-    let idFilm = card.id;
+function lockModalWatched(idFilm) {
     let lockWatched = false;
     let storageWatched = [];
 

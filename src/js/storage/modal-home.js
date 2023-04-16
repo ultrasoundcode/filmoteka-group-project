@@ -7,9 +7,8 @@ function modalHome(card) {
     let lockWatched = false;
     let storageQueue = [];
     let storageWatched = [];
-
-    ({ lockQueue, storageQueue } = lockModalQueue.lockModalQueue(card));
-    ({lockWatched, storageWatched} = lockModalWatched.lockModalWatched(card));
+    ({ lockQueue, storageQueue } = lockModalQueue.lockModalQueue(card.id));
+    ({lockWatched, storageWatched} = lockModalWatched.lockModalWatched(card.id));
 
     modalBtn.eventModalBtn(card, storageQueue, storageWatched, lockQueue, lockWatched)
 

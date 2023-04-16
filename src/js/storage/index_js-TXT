@@ -1,0 +1,151 @@
+//   ВАРИАНТ алгоритма работы всего проекта - проверено, работает.
+
+//  1) c внедрением library-filters.js  НЕ СОГЛАСЕН !!!  Зачем так усложнять???  
+//      Где теперь находится значение цвета ?
+//      Оставьте, пожалуйста, в моем варианте - без library-filters.js
+//  2) на все события "close modal"  
+//                                          refs.closeBtn.addEventListener('click', closeModalOnBtnClick);
+//                                          window.addEventListener('click', closeModalOnBgClick);
+//                                          document.addEventListener('keydown', closeModalOnEsc);
+//      нужно добавить функцию function closeModalCard()
+//  3) на кнопку Add to watched  поставить класс  “addWatched”
+//  4) на кнопку Add to queue  поставить класс  “addQueue”
+//  5) на кнопку watched  поставить классы  “watched  visually-hidden”
+//  7) на кнопку queue  поставить классы  “queue  visually-hidden”
+//  8) в файле index js поставить
+//                      import axios from 'axios';
+//                      import { BASE_URL, API_KEY } from './js/settings';
+//                      import storage from './js/storage/modal-home'
+//                      import storageGetQueue from './js/storage/get-queue';
+//                      import storageGetWatched from './js/storage/get-watched';
+//                      import { refs } from '../refs';
+//   9) удалить в html дубликат кнопки HOME
+//   
+
+
+// INDEX.JS
+
+import './js/apiService';
+import './js/search';
+import storage from './js/storage/modal-home';
+//import storageGetQueue from './js/storage/get-queue';
+//import storageAddWatched from './js/storage/add-watched';
+//import btnQueue from './js/storage/modal-library-queue';
+//import btnQueue from './js/storage/modal-library-watched';
+//import './js/library/library-filters';
+import './js/modal/modal';
+//-------------------------------
+
+import axios from 'axios';
+import { BASE_URL, API_KEY } from './js/settings';
+import storage from './js/storage/modal-home'
+import storageGetQueue from './js/storage/get-queue';
+import storageGetWatched from './js/storage/get-watched';
+import { refs } from './js/refs';
+
+
+const fieldsCard = ['backdrop_path', 'id', 'release_date', 'title']
+
+let galleryFilms = [];                      // переменная для хранения даных полученных фильмов в gallery HOME
+
+refs.gallery.innerHTML = '';
+
+function filterObj(obj) {                   //фильтр полей объекта по заданным ключам (const fieldsCard)
+    let keyObj = Object.keys(obj);
+    keyObj.forEach(function (item) {
+        if (fieldsCard.indexOf(item) === -1) {
+            delete obj[item]
+        }
+    })
+    return obj
+}
+
+function reset() {
+    refs.gallery.innerHTML = '';
+    galleryFilms = [];
+    closeModalCard();
+}
+
+function galleryHTML(url) {    
+    const request = axios(url)
+    .then(response => response.data.results)                                   
+    .then(data => galleryFilms = data.map(item =>filterObj(item)) )        // делаем выборку всех нужных данных карточек для массива  страницы, запоминаем их в let
+    .then(data => doGaleryHTML(data))                                      //формируем html галереи
+    .then(pageId => refs.gallery.insertAdjacentHTML('beforeend', pageId))  //рендерим страницу
+    .catch(error => console.log(error))
+}
+
+function galleryInput() {                   //INPUT
+    reset();
+    closeMyLibrary();
+
+    // - - input . . . . . . . . . . 
+    // const url = `${BASE_URL}/ . . . . .  
+    // galleryHTML(url)
+}
+
+function trendingGallery(event) {           //HOME
+    reset();
+    closeMyLibrary();
+
+    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${1}`;
+
+    galleryHTML(url)
+}
+
+function doGaleryHTML(data) {
+    return data.map(item => `< ... >  ...  </...>`).join('')
+}
+
+function openModalCard(event) {                     //MODAL - выбор фильма
+    let filmId = event.target.getAttribute('data-id');              // определяем id фильма
+    let filmCard = galleryFilms.find(item => item.id == filmId);     // по id находим объект данных для модалки
+    // . . . . . .                                           // показываем модалку
+    storage.modalHome(filmCard);                            // блокируем кнопки, еслм фмльм уже доьавлен
+}
+
+function closeModalCard() {                  // закрываем модалку
+                                            // скрываем модалку и возвращаемся к галерее
+    refs.btnAddQueue.style.removeProperty('background-color'); 
+    refs.btnAddWatched.style.removeProperty('background-color');
+}
+
+
+function myLibrary(event) {                  //LIBRARY
+    reset();
+
+    refs.queueBtn.classList.remove('visually-hidden');                // показываем кнопки для Library
+    refs.watchedBtn.classList.remove('visually-hidden');
+
+    refs.queueBtn.addEventListener('click', openGaleryQueue);
+    refs.watchedBtn.addEventListener('click', openGaleryWatched);
+
+}
+
+function closeMyLibrary() {
+    refs.queueBtn.classList.add('visually-hidden');
+    refs.watchedBtn.classList.add('visually-hidden');
+}
+
+function openGaleryQueue() {
+    reset();
+
+    galleryFilms = storageGetQueue.getQueue();
+    let galeryHTML = doGaleryHTML(galleryFilms);
+    refs.gallery.insertAdjacentHTML('beforeend', galeryHTML)
+}
+
+function openGaleryWatched() {
+    reset();
+
+    galleryFilms = storageGetWatched.getWatched();
+    let galeryHTML = doGaleryHTML(galleryFilms);
+    refs.gallery.insertAdjacentHTML('beforeend', galeryHTML)
+
+}
+
+refs.searchInput.addEventListener('click', galleryInput);
+refs.homeBtn.addEventListener('click', trendingGallery);
+refs.libraryBtn.addEventListener('click', myLibrary);
+refs.gallery.addEventListener('click', openModalCard);
+refs.btnCloseModal.addEventListener('click', closeModalCard);

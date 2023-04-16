@@ -1,7 +1,6 @@
 import storageGetQueue from './get-queue';
 
-function lockModalQueue(card) {
-    let idFilm = card.id;
+function lockModalQueue(idFilm) {
     let lockQueue = false;
     let storageQueue = [];
 

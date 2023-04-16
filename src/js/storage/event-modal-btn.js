@@ -1,40 +1,38 @@
 import storageAddQueue from './add-queue';
 import storageAddWatched from './add-watched';
+import { refs } from '../refs';
 
 function eventModalBtn(card, storageQueue, storageWatched, lockQueue, lockWatched) {
 
-    let colorLockBtn = 'background-color: aliceblue;';  // цвет заблокированных кнопок модального окна
+    let colorLockBtn = 'background-color: red';  // цвет заблокированных кнопок модального окна
                                                         //("Add to watched" и "Add to queue")
-    
-    const btnAddQueue = document.querySelector('.addQueue');
-    const btnAddWatched = document.querySelector('.addWatched');
-    
-    function btnAddAddQueue(event) {
+
+    function btnAddQueue(event) {
             storageQueue.push(card);
             storageAddQueue.addQueue(storageQueue);
             lockQueue = false;
-            btnAddQueue.style = colorLockBtn;
-            btnAddQueue.removeEventListener('click', btnAddAddQueue);
+            refs.btnAddQueue.style = colorLockBtn;
+            refs.btnAddQueue.removeEventListener('click', btnAddQueue);
     }
 
-    function btnAddAddWatched(event) {
+    function btnAddWatched(event) {
             storageWatched.push(card);
             storageAddWatched.addWatched(storageWatched);
             lockWatched = false;
-            btnAddWatched.style = colorLockBtn;
-            btnAddWatched.removeEventListener('click', btnAddAddWatched);
+            refs.btnAddWatched.style = colorLockBtn;
+            refs.btnAddWatched.removeEventListener('click', btnAddWatched);
     }
 
     if (lockQueue) {
-        btnAddQueue.addEventListener('click', btnAddAddQueue)
+        refs.btnAddQueue.addEventListener('click', btnAddQueue)
     } else {
-        btnAddQueue.style = colorLockBtn
+        refs.btnAddQueue.style = colorLockBtn
     }
     
     if (lockWatched) {
-        btnAddWatched.addEventListener('click', btnAddAddWatched)
+        refs.btnAddWatched.addEventListener('click', btnAddWatched)
     } else {
-        btnAddWatched.style = colorLockBtn
+        refs.btnAddWatched.style = colorLockBtn
     }
 }
 
