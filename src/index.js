@@ -7,3 +7,4 @@ import btnQueue from './js/storage/modal-library-queue';
 import btnQueue from './js/storage/modal-library-watched';
 import './js/library/library-filters';
 import './js/modal/modal';
+import './js/pagination';
