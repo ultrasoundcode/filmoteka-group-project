@@ -2,7 +2,7 @@ import { refs } from '../refs';
 import { renderMoviesDetailed } from './initial-library-render';
 import { toggleActiveClass } from './fnToggleActiveClass';
 import { getFromLocalStorage } from '../storage/ls-data-services';
-import { renderMoviesDetailed } from './fnrenderMoviesDetailed';
+import { renderMoviesDetailed } from './fnRenderMoviesDetailed';
 
 refs.libButtons.addEventListener('click', onLibraryBtnClick);
 // renderMoviesDetailed - Фильтрация рендера фильмов по нажатию кнопки Watched или Queue
