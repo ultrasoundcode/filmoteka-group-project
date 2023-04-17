@@ -45,7 +45,6 @@ export default class MovieApi {
   
   async getGenres() {
     const url =`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
-    console.log(url);
     const response = await axios.get(url);
     return response.data.genres;
   }
