@@ -67,6 +67,7 @@
   color: #ffffff;
 }
 .search-input {
+  font-family: 'Roboto', sans-serif;
   padding: 10px 26px;
   background-color: white;
   border-radius: 100px;
@@ -76,16 +77,27 @@
   line-height: 14px;
   color: black;
   width: 252px;
+  height: 34px;
   border: none;
   outline: none;
+  @media screen and (min-width: 767px) {
+    width: 165px;
+    height: 38px;
+  }
 }
 .page-header__logo {
+  position: absolute;
+
   display: flex;
   justify-content: center;
   margin-top: 258px;
   margin-right: 65px;
   margin-left: 65px;
   margin-bottom: 16px;
+  @media screen and (max-width: 767px) {
+    bottom: -390px;
+    left: -35px;
+  }
   @media screen and (min-width: 768px) {
     margin-top: 116px;
     justify-content: flex-start;
