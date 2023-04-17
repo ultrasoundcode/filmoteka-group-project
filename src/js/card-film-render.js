@@ -15,7 +15,7 @@ export function renderMovies(data) {
 async function createRenderMovies(movie) {
   const imageSrc = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : '';
+    : `https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png`;
   const genres = await generateGenresFromGetApi(movie.genre_ids);
   const year = movie.release_date ? movie.release_date.split('-')[0] : 'n/a';
   return `
