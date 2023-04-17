@@ -41,7 +41,7 @@
   text-align: center;
   text-transform: uppercase;
   color: #000000;
-  transition: background-color 250ms var(--animation-cubic),
+  transition: background-color 500ms var(--animation-cubic),
     filter 250ms var(--animation-cubic), color 250ms var(--animation-cubic);
 }
 .header-button.active {
