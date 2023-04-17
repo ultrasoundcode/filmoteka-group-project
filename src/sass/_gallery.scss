@@ -50,7 +50,7 @@ img {
   margin-bottom: 32px;
   margin-left: auto;
   margin-right: auto;
-  grid-auto-rows: 443px;
+  grid-auto-rows: 450px;
   grid-gap: 20px;
 
   @media screen and (min-width: 768px) {
@@ -68,21 +68,27 @@ img {
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  padding-bottom: 7px;
   border-radius: 5px;
   transition: all 250ms;
+  
   cursor: pointer;
   &:hover {
     box-shadow: 0 4px 10px #000;
+    scale: 1.01;
   }
+  
 
   @media screen and (min-width: 768px) {
+    padding-bottom: 7px;
     width: 336px;
-    height: 494px;
+    height: 501px;
   }
 
   @media screen and (min-width: 1280px) {
+    padding-bottom: 12px;
     width: 395px;
-    height: 634px;
+    height: 646px;
   }
 
   &-image {
@@ -110,6 +116,7 @@ img {
     line-height: 1.33;
     width: 280px;
     margin-top: 10px;
+    padding-left: 3px;
 
     @media screen and (min-width: 768px) {
       width: 336px;

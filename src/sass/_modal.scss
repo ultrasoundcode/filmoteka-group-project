@@ -7,6 +7,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 16;
+  overflow: auto;
 }
 .modal__container {
   position: absolute;
@@ -201,8 +202,8 @@
   background: #ffffff;
   border-radius: 100px;
   color: #b92f2c;
-  border: 1px solid #000000;
-  font-size: 14px;
+  border: 1pxp solid #000000;
+  font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
   width: 125px;
@@ -211,14 +212,17 @@
     height: 38px;
   }
   @media screen and(min-width: 1280px) {
+    font-size: 14px;
     width: 165px;
     height: 42px;
   }
-  &.--active-btn {
-    color: white;
-    background-color: #b92f2c;
-    border: 1px solid #b92f2c;
+  &--lss {
+    color: rgb(182, 172, 172);
+    background-color: #f1eeee;
+    border: 1px solid#f1eeee;
   }
+  
+
   &:hover,
   &:focus {
     color: white;
@@ -232,7 +236,7 @@
   border-radius: 100px;
   color: #b92f2c;
   border: 1px solid #000000;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
   width: 111px;
@@ -241,18 +245,27 @@
     height: 38px;
   }
   @media screen and(min-width: 1280px) {
+    font-size: 14px;
     width: 134px;
     height: 42px;
   }
-  &.--active-btn {
-    color: white;
-    background-color: #b92f2c;
-    border: 1px solid #b92f2c;
+  
+  &--lss {
+    color: rgb(182, 172, 172);
+    background-color: #f1eeee;
+    border: 1px solid#f1eeee;
   }
+  
   &:hover,
   &:focus {
     color: white;
     background-color: #b92f2c;
     border: 1px solid #b92f2c;
   }
+}
+
+.lss {
+  color: rgb(182, 172, 172);
+  background-color: #f1eeee;
+  border: 1px solid#f1eeee;
 }
