@@ -12,18 +12,16 @@ const movieApi = new MovieApi();
   try {
     const movies = await movieApi.getTrendingMovies();
     renderMovies(movies);
-
   } catch (error) {
     console.error(error);
   }
 })();
 
 // Обработчик событий на форму поиска
-refs.searchInput.addEventListener('input', debounce(onSearchMovie, DEBOUNCE_DELAY));
-// Обработчик событий на кнопку "HOME"
-refs.homeBtn.addEventListener('click', onHomeBtn);
-// Обработчик событий на кнопку "MY LIBRARY"
-refs.libraryBtn.addEventListener('click', onLibraryBtn);
+refs.searchInput.addEventListener(
+  'input',
+  debounce(onSearchMovie, DEBOUNCE_DELAY)
+);
 
 async function onSearchMovie() {
   const query = refs.searchInput.value.trim();
@@ -46,20 +44,6 @@ async function onSearchMovie() {
   } catch (error) {
     console.error(error);
   }
-}
-
-async function onHomeBtn() {
-  try {
-    const movies = await movieApi.getTrendingMovies();
-    renderMovies(movies);
-    refs.searchInput.value = '';
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function onLibraryBtn() {
-  // Здесь можно перейти на страницу с выбранной коллекцией фильмов
 }
 
 function clearSearchItemsMarkup() {
