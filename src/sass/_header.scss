@@ -117,9 +117,18 @@
 }
 .page-header__movie-menu {
   display: flex;
+  position: absolute;
+  top: 396px;
+  left: 35px;
   justify-content: center;
   align-items: center;
   gap: 4px;
+  @media screen and (min-width: 768px) {
+    left: 540px;
+  }
+  @media screen and (min-width: 1280px) {
+    left: 1000px;
+  }
 }
 .page-header__container {
   position: relative;
