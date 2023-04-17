@@ -4,17 +4,23 @@ export default class MovieApi {
   constructor() {
     this.page = 1;
     this.genreId = '';
-    this.language = 'en-US';
+    this.genre = '';
   }
 
   async getTrendingMovies() {
-    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&language=${this.language}&page=${this.page}`;
+    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${this.page}`;
+    const response = await axios.get(url);
+    return response.data.results;
+  }
+
+  async getMoviesFromPagination(page) {
+    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`;
     const response = await axios.get(url);
     return response.data.results;
   }
 
   async searchMovies(query) {
-    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=${this.language}&query=${query}`;
+    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`;
     const response = await axios.get(url);
     return response.data.results;
   }
@@ -25,10 +31,16 @@ export default class MovieApi {
     return response.data;
   }
 
-  incrementPage() {
-    this.page += 1;
+  async getMoviesByGenres() {
+    const url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&page=${this.page}&with_genres=${this.genreId}`;
+    const response = await axios.get(url);
+    return response.data.results;
   }
-  resetPage() {
-    this.page = 1;
+  
+  async getGenres() {
+    const url =`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
+    console.log(url);
+    const response = await axios.get(url);
+    return response.data.genres;
   }
 }

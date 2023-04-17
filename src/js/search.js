@@ -4,23 +4,22 @@ import { refs } from './refs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { renderMovies } from './card-film';
 
-const DEBOUNCE_DELAY = 1000;
+const DEBOUNCE_DELAY = 250;
 const movieApi = new MovieApi();
+
 // Загрузка списка самых популярных фильмов при загрузке страницы
 (async () => {
   try {
     const movies = await movieApi.getTrendingMovies();
     renderMovies(movies);
+
   } catch (error) {
     console.error(error);
   }
 })();
 
 // Обработчик событий на форму поиска
-refs.searchInput.addEventListener(
-  'input',
-  debounce(onSearchMovie, DEBOUNCE_DELAY)
-);
+refs.searchInput.addEventListener('input', debounce(onSearchMovie, DEBOUNCE_DELAY));
 // Обработчик событий на кнопку "HOME"
 refs.homeBtn.addEventListener('click', onHomeBtn);
 // Обработчик событий на кнопку "MY LIBRARY"
