@@ -12,7 +12,7 @@ const api = new MovieApi();
 refs.gallery.addEventListener('click', onGalleryCardClick);
 
 async function onGalleryCardClick(e) {
-  let targetId = e.target.closest('li').attributes[0].value;
+  let targetId = e.target.closest('li').attributes[1].value;
   api.getMovieDetails(targetId).then(movie => {
     refs.modalContent.innerHTML = modalCard(movie);
     refs.modal.style.display = 'block';

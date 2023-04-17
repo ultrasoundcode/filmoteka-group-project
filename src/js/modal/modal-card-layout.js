@@ -46,10 +46,10 @@ export function modalCard(movie) {
   <p class="modal__about">About</p>
   <p class="modal__overview">${movie.overview}</p>
   <div class="modal__button-container">
-    <button class="modal__button-1 addWatched" type="button" data-action="id">
+    <button class="modal__button addWatched" type="button" data-action="id">
       Add to Watched
     </button>
-    <button class="modal__button-2 addQueue" type="button" data-action="id">
+    <button class="modal__button addQueue" type="button" data-action="id">
       Add to Queue
     </button>
   </div>
