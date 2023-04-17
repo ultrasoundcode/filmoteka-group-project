@@ -19,6 +19,12 @@ export default class MovieApi {
     return response.data.results;
   }
 
+  async getMoviesForPagination(page) {
+    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&language=${this.language}&page=${page}`;
+    const response = await axios.get(url);
+    return response.data.results;
+  }
+
   async searchMovies(query) {
     const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`;
     const response = await axios.get(url);

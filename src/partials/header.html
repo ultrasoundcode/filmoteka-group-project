@@ -3,19 +3,12 @@
     <nav class="page-header__navigation">
       <ul class="page-header__menu">
         <li class="page-header__item">
-          <a
-            class="header-button home-page nav-button current"
-            href="./index.html"
-            >Home</a
-          >
-        </li>
-        <li class="page-header__item">
-          <button class="header-button nav-button current home-page">
+          <button class="header-button home-page nav-button active">
             Home
           </button>
         </li>
         <li class="page-header__item">
-          <button class="header-button nav-button library-page">
+          <button class="header-button library-page nav-button">
             My Library
           </button>
         </li>
@@ -27,31 +20,27 @@
           type="text"
           id="movie-search"
           placeholder="Movie search"
+          type="submit"
+          value=""
         />
-
-        <input type="submit" value="" />
       </form>
-      <!-- <button class="search-button">
-        <svg class="page-header__search_icon" width="16" height="16">
-          <use href="./img/icons.svg#search-icon"></use>
-        </svg>
-      </button> -->
     </nav>
-    <ul class="page-header__movie-menu my-library">
-      <li class="page-header__movie-menu-item watched">
-        <a class="header-button library-button" href="#">Watched</a>
-      </li>
-      <li class="page-header__movie-menu-item queue">
-        <a class="header-button library-button current" href="#">Queue</a>
-      </li>
-    </ul>
-    <ul class="page-header__logo">
-      <li class="page-header__logo-item">
+    <div class="wrapper">
+      <div class="page-header__logo">
         <svg class="page-header__logo_icon" width="50" height="50">
           <use href="./img/icons.svg#logo-icon"></use>
         </svg>
-      </li>
-      <li class="page-header__logo-item logo-text">Filmoteka</li>
-    </ul>
+        <p class="logo-text">Filmoteka</p>
+      </div>
+
+      <ul class="page-header__movie-menu my-library is-hidden">
+        <li class="page-header__movie-menu-item">
+          <button class="header-button library-button watched">Watched</button>
+        </li>
+        <li class="page-header__movie-menu-item">
+          <button class="header-button library-button queue">Queue</button>
+        </li>
+      </ul>
+    </div>
   </div>
 </header>
