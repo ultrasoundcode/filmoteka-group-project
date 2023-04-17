@@ -1,5 +1,3 @@
-import { refs } from '../refs';
-
 function addToLocalStorage(tag, movieData, key) {
   let movies = JSON.parse(localStorage.getItem(tag)) || [];
 
@@ -17,7 +15,6 @@ function getFromLocalStorage(tag) {
   let storedMovies = JSON.parse(localStorage.getItem(tag)) || [];
   return storedMovies;
 }
-
 function getAllMoviesFromLocalStorage() {
   const watchedMovies = getFromLocalStorage('watched');
   const queueMovies = getFromLocalStorage('queue');
@@ -40,7 +37,6 @@ function addToWatched(movies, movieData, tag) {
     console.log('Movie is already in the array');
   }
 }
-
 function addToQueue(movies, movieData, tag) {
   const watchedMovies = JSON.parse(localStorage.getItem('watched')) || [];
   const movieIndex = movies.findIndex(movie => movie.id === movieData.id);

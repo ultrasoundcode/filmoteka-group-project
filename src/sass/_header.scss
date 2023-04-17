@@ -94,6 +94,8 @@
   margin-right: 65px;
   margin-left: 65px;
   margin-bottom: 16px;
+
+  cursor: pointer;
   @media screen and (max-width: 767px) {
     bottom: -390px;
     left: -35px;
@@ -104,13 +106,11 @@
   }
 }
 .logo-text {
-  margin-bottom: 18px;
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 32px;
   line-height: 38px;
-  display: flex;
   align-items: center;
   text-align: center;
   color: #ffffff;
