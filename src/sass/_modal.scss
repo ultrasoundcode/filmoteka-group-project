@@ -221,12 +221,6 @@
     padding: 14 32;
     font-size: 14px;
   }
-  &--lss {
-    color: rgb(182, 172, 172);
-    background-color: #f1eeee;
-    border: 1px solid#f1eeee;
-  }
-
   &:hover,
   &:focus {
     color: white;
@@ -239,4 +233,12 @@
   color: rgb(182, 172, 172);
   background-color: #f1eeee;
   border: 1px solid#f1eeee;
+
+  &:hover,
+  &:focus {
+    cursor: auto;
+    color: rgb(182, 172, 172);
+    background-color: #f1eeee;
+    border: 1px solid#f1eeee;
+  }
 }
