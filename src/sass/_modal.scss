@@ -7,6 +7,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 16;
+  overflow: auto;
 }
 .modal__container {
   position: absolute;
@@ -191,34 +192,41 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  gap: 10px;
+  gap: 4px;
+  @media screen and(min-width: 780px) {
+    gap: 8px;
+  }
   @media screen and(min-width: 1280px) {
+    gap: 10px;
     justify-content: left;
   }
 }
-.modal__button-1 {
-  height: 34px;
+.modal__button {
+  padding: 10px 12px;
+
   background: #ffffff;
-  border-radius: 100px;
   color: #b92f2c;
-  border: 1px solid #000000;
-  font-size: 14px;
+
+  border: 1pxp solid #000000;
+  border-radius: 100px;
+
+  font-size: 12px;
   font-weight: 500;
+  line-height: 14px;
   text-transform: uppercase;
-  width: 125px;
   @media screen and(min-width: 780px) {
-    width: 137px;
-    height: 38px;
+    padding: 12 18;
   }
   @media screen and(min-width: 1280px) {
-    width: 165px;
-    height: 42px;
+    padding: 14 32;
+    font-size: 14px;
   }
-  &.--active-btn {
-    color: white;
-    background-color: #b92f2c;
-    border: 1px solid #b92f2c;
+  &--lss {
+    color: rgb(182, 172, 172);
+    background-color: #f1eeee;
+    border: 1px solid#f1eeee;
   }
+
   &:hover,
   &:focus {
     color: white;
@@ -226,33 +234,9 @@
     border: 1px solid #b92f2c;
   }
 }
-.modal__button-2 {
-  height: 34px;
-  background: #ffffff;
-  border-radius: 100px;
-  color: #b92f2c;
-  border: 1px solid #000000;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  width: 111px;
-  @media screen and(min-width: 780px) {
-    width: 119px;
-    height: 38px;
-  }
-  @media screen and(min-width: 1280px) {
-    width: 134px;
-    height: 42px;
-  }
-  &.--active-btn {
-    color: white;
-    background-color: #b92f2c;
-    border: 1px solid #b92f2c;
-  }
-  &:hover,
-  &:focus {
-    color: white;
-    background-color: #b92f2c;
-    border: 1px solid #b92f2c;
-  }
+
+.lss {
+  color: rgb(182, 172, 172);
+  background-color: #f1eeee;
+  border: 1px solid#f1eeee;
 }
