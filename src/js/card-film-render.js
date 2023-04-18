@@ -1,5 +1,7 @@
 import { refs } from './refs';
 import MovieApi from './apiService';
+import noPoster from './../img/no-poster.jpg';
+import '../sass/_gallery.scss';
 
 // Рендер карточек с фильмами
 export function renderMovies(data) {
@@ -15,22 +17,22 @@ export function renderMovies(data) {
 async function createRenderMovies(movie) {
   const imageSrc = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : `https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png`;
+    : noPoster;
   const genres = await generateGenresFromGetApi(movie.genre_ids);
   const year = movie.release_date ? movie.release_date.split('-')[0] : 'n/a';
   return `
-             <li class='gallery__item' data-id="${movie.id}">
-        <img class='gallery__item-image'  alt="${
-          movie.title
-        }" src="${imageSrc}">
-        <div class='gallery__item-description' > <h3 class='gallery__item-description-title'>${
-          movie.title
-        }</h3>
-        <p class='gallery__item-description-genres'>${genres
-          .slice(0, 2)
-          .concat('...')
-          .join(', ')} | ${year}</p> </div>
-      </li>
+     <li class='gallery__item' data-id="${movie.id}">
+      <img class='gallery__item-image' alt="${movie.title}" src="${imageSrc}">
+      <div class='gallery__item-description'> 
+        <h3 class='gallery__item-description-title'>
+        ${movie.title}
+        </h3>
+        <p class='gallery__item-description-genres'>
+        ${genres.slice(0, 2).concat('...').join(', ')}
+         | ${year}
+        </p> 
+      </div>
+   </li>
     `;
 }
 

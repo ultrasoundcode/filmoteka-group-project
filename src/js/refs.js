@@ -1,5 +1,7 @@
 export const refs = {
   //-----nav-menu-refs------
+
+  loader: document.querySelector('.loader'),
   searchInput: document.querySelector('.search-input'),
   homeBtn: document.querySelector('.home-page'),
   libraryBtn: document.querySelector('.library-page'),

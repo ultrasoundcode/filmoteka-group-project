@@ -6,6 +6,8 @@ import { renderMovies } from './card-film-render';
 const movieApi = new MovieApi();
 
 let currentPage = 1;
+let query = '';
+
 const pagination = new Pagination(refs.pagContainer, {
   totalItems: 0,
   itemsPerPage: 20,
@@ -32,8 +34,17 @@ const pagination = new Pagination(refs.pagContainer, {
       '</a>',
   },
 });
+
 pagination.reset(400);
+
 pagination.on('beforeMove', async event => {
   currentPage = event.page;
-  await movieApi.getMoviesForPagination(currentPage).then(r => renderMovies(r));
+  let movies;
+  if (query) {
+    movies = await movieApi.getSearchMoviesForPagination(currentPage);
+  } else {
+    movies = await movieApi.getTrendingMoviesForPagination(currentPage);
+  }
+  renderMovies(movies);
 });
+
