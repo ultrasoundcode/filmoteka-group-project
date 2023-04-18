@@ -45,3 +45,6 @@ async function onSearchMovie() {
     console.error(error);
   }
 }
+refs.team.addEventListener('click', () => {
+  Notify.success('Тут скоро будет модалка');
+});
