@@ -50,10 +50,28 @@ function addToQueue(movies, movieData, tag) {
     console.log('Movie is already in the array');
   }
 }
+function checkMovieLocationById(id) {
+  const watchedMovies = JSON.parse(localStorage.getItem('watched')) || [];
+  const queueMovies = JSON.parse(localStorage.getItem('queue')) || [];
+  const watchedIndex = watchedMovies.findIndex(
+    movie => movie.id === Number(id)
+  );
+  const queueIndex = queueMovies.findIndex(movie => movie.id === Number(id));
+
+  if (watchedIndex !== -1) {
+    return 'watched';
+  } else if (queueIndex !== -1) {
+    return 'queue';
+  } else {
+    return null;
+  }
+}
+
 export {
   addToLocalStorage,
   getAllMoviesFromLocalStorage,
   getFromLocalStorage,
   addToQueue,
   addToWatched,
+  checkMovieLocationById,
 };

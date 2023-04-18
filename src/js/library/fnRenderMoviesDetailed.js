@@ -17,7 +17,7 @@ async function renderMoviesDetailed(data) {
         ? movie.release_date.split('-')[0]
         : 'n/a';
       return `
-  <li data-id="${movie.id}" class='gallery__item'>
+  <li  class='gallery__item' data-id="${movie.id}">
       <img class='gallery__item-image' alt="${movie.title}" src="${imageSrc}">
     <div class='gallery__item-description'>
     <h3 class='gallery__item-description-title' >${movie.title}</h3>

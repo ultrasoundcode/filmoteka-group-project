@@ -6,7 +6,8 @@ import {
   closeModalOnEsc,
   closeModalOnBtnClick,
 } from './modal-close-functions';
-import { onAddToQueueClick, onAddToWatchedClick } from './modal-btns-functions';
+import { onModalBtnClick } from './modal-btns-functions';
+import { toggleModalBtnsDisplay } from './modal-btns-functions';
 
 const api = new MovieApi();
 refs.gallery.addEventListener('click', onGalleryCardClick);
@@ -18,12 +19,13 @@ async function onGalleryCardClick(e) {
     refs.modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 
-    refs.modalContent.addEventListener('click', e => {
-      if (e.target.matches('.addWatched')) {
-        onAddToWatchedClick(movie);
-      } else if (e.target.matches('.addQueue')) {
-        onAddToQueueClick(movie);
-      }
+    const addToWatchedBtn = refs.modalContent.querySelector('.addWatched');
+    const addToQueueBtn = refs.modalContent.querySelector('.addQueue');
+
+    toggleModalBtnsDisplay(targetId, addToWatchedBtn, addToQueueBtn);
+
+    refs.modalContent.addEventListener('click', function (e) {
+      onModalBtnClick(e, movie);
     });
   });
 }

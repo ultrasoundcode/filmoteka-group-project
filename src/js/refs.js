@@ -15,6 +15,8 @@ export const refs = {
   modal: document.querySelector('.modal'),
   closeBtn: document.querySelector('.modal__close-button'),
   modalContent: document.querySelector('.modal__render'),
+  // addWatched: document.querySelector('.addWatched'),
+  // addQueue: document.querySelector('.addQueue'),
   // -----pagination-----
   pagContainer: document.querySelector('.tui-pagination'),
 };
