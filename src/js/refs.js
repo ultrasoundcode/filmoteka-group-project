@@ -19,4 +19,5 @@ export const refs = {
   // addQueue: document.querySelector('.addQueue'),
   // -----pagination-----
   pagContainer: document.querySelector('.tui-pagination'),
+  team: document.querySelector('.design'),
 };
