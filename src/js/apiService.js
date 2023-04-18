@@ -17,8 +17,14 @@ export default class MovieApi {
     hideLoader();
     return response.data.results;
   }
-
-  async getMoviesFromPagination(page) {
+  async getData() {
+    showLoader();
+    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${this.page}`;
+    const response = await axios.get(url);
+    hideLoader();
+    return response.data;
+  }
+  async getMoviesForPagination(page) {
     showLoader();
     const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`;
     const response = await axios.get(url);
@@ -42,7 +48,7 @@ export default class MovieApi {
     return response.data.results;
   }
 
-  async getSearchMoviesForPagination(page) {
+  async getSearchMoviesForPagination(query, page) {
     showLoader();
     const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`;
     const response = await axios.get(url);
@@ -57,27 +63,27 @@ export default class MovieApi {
     hideLoader();
     return response.data;
   }
-  
+
   async getGenres() {
     showLoader();
-    const url =`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
+    const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
     const response = await axios.get(url);
     hideLoader();
     return response.data.genres;
   }
-get query() {
+  get query() {
     return this.searchQuery;
   }
 
-set query(newQuery) {
+  set query(newQuery) {
     this.searchQuery = newQuery;
-}
+  }
 
-incrementPage() {
+  incrementPage() {
     this.page += 1;
-}
+  }
 
-resetPage() {
+  resetPage() {
     this.page = 1;
-}
+  }
 }
