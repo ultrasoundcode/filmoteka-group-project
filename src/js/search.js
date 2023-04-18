@@ -3,6 +3,7 @@ import debounce from 'lodash/debounce';
 import { refs } from './refs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { renderMovies } from './card-film-render';
+import { onHomeBtn } from './nav-bar/nav-btns-functions';
 
 const DEBOUNCE_DELAY = 250;
 const movieApi = new MovieApi();
@@ -28,8 +29,7 @@ async function onSearchMovie() {
 
   try {
     if (query === '') {
-      Notify.info('Please enter a movie name to search.');
-      clearSearchItemsMarkup();
+      onHomeBtn();
       return;
     }
     const movies = await movieApi.searchMovies(query);
@@ -44,8 +44,4 @@ async function onSearchMovie() {
   } catch (error) {
     console.error(error);
   }
-}
-
-function clearSearchItemsMarkup() {
-  refs.gallery.innerHTML = '';
 }

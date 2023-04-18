@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix';
 function addToLocalStorage(tag, movieData, key) {
   let movies = JSON.parse(localStorage.getItem(tag)) || [];
 
@@ -33,8 +34,9 @@ function addToWatched(movies, movieData, tag) {
   if (movieIndex === -1 && queueMovieIndex === -1) {
     movies.push(movieData);
     localStorage.setItem(tag, JSON.stringify(movies));
+    Notify.success('Movie is sucessfully added to Watched');
   } else {
-    console.log('Movie is already in the array');
+    // Notify.failure('Movie is already added');
   }
 }
 function addToQueue(movies, movieData, tag) {
@@ -46,8 +48,9 @@ function addToQueue(movies, movieData, tag) {
   if (movieIndex === -1 && watchedMovieIndex === -1) {
     movies.push(movieData);
     localStorage.setItem(tag, JSON.stringify(movies));
+    Notify.success('Movie is sucessfully added to Queue');
   } else {
-    console.log('Movie is already in the array');
+    // Notify.failure('Movie is already added');
   }
 }
 function checkMovieLocationById(id) {
