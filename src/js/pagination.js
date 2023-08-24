@@ -16,8 +16,6 @@ import {
   makeMyLibraryActive,
 } from './nav-bar/nav-btns-functions';
 
-const movieApi = new MovieApi();
-
 const pagination = new Pagination(refs.pagContainer, {
   totalItems: 0,
   itemsPerPage: 20,
@@ -44,54 +42,72 @@ const pagination = new Pagination(refs.pagContainer, {
       '</a>',
   },
 });
-let totalMovies = 400;
-pagination.reset(totalMovies);
-// Home page pagination
-refs.homeBtn.addEventListener('click', activateHomePagination);
 
-function activateHomePagination() {
-  pagination.reset(400);
-  pagination.on('beforeMove', async event => {
+const movieApi = new MovieApi();
+
+movieApi.getMoviesCount().then(count => {
+pagination.reset(count);
+});
+
+//   Home page and movie search pagination
+refs.searchInput.addEventListener('input', async () => {
+  const query = refs.searchInput.value.trim();
+  const totalItems = query
+    ? await movieApi.getSearchMoviesCount(query)
+    : await movieApi.getMoviesCount(query);
+  pagination.reset(totalItems);
+});
+
+refs.homeBtn.addEventListener('click', async () => {
+  makeHomeActive();
+  pagination.reset(await movieApi.getMoviesCount());
+});
+
+pagination.on('beforeMove', async event => {
     const query = refs.searchInput.value.trim();
     if (query) {
-      makeHomeActive();
       await movieApi.getSearchMoviesForPagination(query, event.page).then(r => {
-        renderMovies(r);
+      renderMovies(r);
       });
     } else {
-      makeHomeActive();
-      await movieApi.getMoviesForPagination(event.page).then(r => {
-        renderMovies(r);
+      await movieApi.getTrendingMoviesForPagination(event.page).then(r => {
+      renderMovies(r);
       });
     }
-  });
-}
+});
 
-// // Library pagination
+//   Library pagination
 refs.libraryBtn.addEventListener('click', activateLibraryPagination);
+refs.queueBtn.addEventListener('click', activateQeueuePagination);
+refs.watchedBtn.addEventListener('click', activateWatchedPagination);
+
 function activateLibraryPagination() {
   refs.watchedBtn.classList.remove('active');
   refs.queueBtn.classList.remove('active');
   pagination.reset(getAllMoviesFromLocalStorage().length);
+
   pagination.on('beforeMove', async event => {
     makeMyLibraryActive();
-
     refs.homeBtn.classList.remove('active');
-
     renderMoviesByPageNumber(event.page);
   });
 }
-refs.queueBtn.addEventListener('click', activateQeueuePagination);
+
 function activateQeueuePagination() {
   pagination.reset(getFromLocalStorage('queue').length);
   pagination.on('beforeMove', async event => {
     renderQueueMoviesByPageNumber(event.page);
   });
 }
-refs.watchedBtn.addEventListener('click', activateWatchedPagination);
+
 function activateWatchedPagination() {
   pagination.reset(getFromLocalStorage('watched').length);
   pagination.on('beforeMove', async event => {
     renderWatchedMoviesByPageNumber(event.page);
   });
 }
+
+
+
+
+

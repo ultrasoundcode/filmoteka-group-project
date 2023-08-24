@@ -17,21 +17,7 @@ export default class MovieApi {
     hideLoader();
     return response.data.results;
   }
-  async getData() {
-    showLoader();
-    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${this.page}`;
-    const response = await axios.get(url);
-    hideLoader();
-    return response.data;
-  }
-  async getMoviesForPagination(page) {
-    showLoader();
-    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`;
-    const response = await axios.get(url);
-    hideLoader();
-    return response.data.results;
-  }
-
+ 
   async getTrendingMoviesForPagination(page) {
     showLoader();
     const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`;
@@ -40,7 +26,15 @@ export default class MovieApi {
     return response.data.results;
   }
 
-  async searchMovies(query) {
+  async getMoviesCount() {
+    showLoader();
+    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`;
+    const response = await axios.get(url);
+    hideLoader();
+    return response.data.total_results;
+  }
+
+  async getSearchMovies(query) {
     showLoader();
     const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`;
     const response = await axios.get(url);
@@ -54,6 +48,14 @@ export default class MovieApi {
     const response = await axios.get(url);
     hideLoader();
     return response.data.results;
+  }
+
+  async getSearchMoviesCount(query) {
+    showLoader();
+    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`;
+    const response = await axios.get(url);
+    hideLoader();
+    return response.data.total_results;
   }
 
   async getMovieDetails(movieId) {
@@ -70,20 +72,5 @@ export default class MovieApi {
     const response = await axios.get(url);
     hideLoader();
     return response.data.genres;
-  }
-  get query() {
-    return this.searchQuery;
-  }
-
-  set query(newQuery) {
-    this.searchQuery = newQuery;
-  }
-
-  incrementPage() {
-    this.page += 1;
-  }
-
-  resetPage() {
-    this.page = 1;
   }
 }
