@@ -27,8 +27,8 @@ img {
 }
 .gallery {
   width: 100%;
-  padding: 20px;
   margin: 0 auto;
+  // padding: 20px;
 
   @media screen and(min-width: 320px) {
     width: 320px;
@@ -36,11 +36,12 @@ img {
   }
   @media screen and(min-width: 768px) {
     width: 768px;
-    padding: 32px;
+    padding: 0 32px 0 32px;
+    // padding: 32px;
   }
   @media screen and(min-width: 1280px) {
     width: 1280px;
-    padding: 32px;
+    // padding: 32px;
   }
 }
 
