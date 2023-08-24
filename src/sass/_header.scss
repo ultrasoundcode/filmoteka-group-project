@@ -89,22 +89,10 @@
 }
 
 .page-header__logo {
-  // position: absolute;
   display: flex;
   margin-top: 290px;
   margin-left: 50px;
   cursor: pointer;
-
-  // justify-content: center;
-  // margin-top: 258px;
-  // margin-right: 65px;
-  // margin-bottom: 16px;
-  // margin-left: 65px;
-
-  @media screen and (max-width: 767px) {
-    // bottom: -390px;
-    // left: -35px;
-  }
   @media screen and (min-width: 768px) {
     margin-top: 116px;
     justify-content: flex-start;
@@ -127,12 +115,6 @@
   top: 390px;
   left: 55px;
   gap: 4px;
-
-  // top: 396px;
-  // left: 35px;
-  // justify-content: center;
-  // align-items: center;
-
   @media screen and (min-width: 768px) {
     left: 430px;
   }
